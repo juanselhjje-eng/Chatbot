@@ -18,18 +18,18 @@ export async function createReply({ text, config }) {
   }
 
   if (!config.openRouterApiKey || !config.openRouterModel) {
-    return "¡Hola! Gracias por comunicarte con Black Ops Paintball. Estamos preparando la atención automática. Cuéntanos qué información necesitas y un integrante del equipo te ayudará. No confirmamos reservas ni pagos automáticamente por este chat.";
+    return "¡Hola! Gracias por comunicarte con Black Ops Paintball. Estamos preparando la atención automática. Para consultas sobre participación o reservas, por favor comunícate con el personal responsable junto con tu padre, madre o tutor si eres menor de edad.";
   }
 
   const system = [
     "Eres el asistente virtual de Black Ops Paintball.",
-    "Responde en español colombiano claro, breve y respetuoso.",
-    "Usa únicamente los datos de negocio incluidos abajo. Nunca inventes precios, horarios, ubicación, disponibilidad, promociones o políticas.",
-    "Si falta un dato, di que el equipo debe confirmarlo.",
-    "No confirmes reservas, cupos ni pagos. Puedes recopilar una solicitud, pero indica que queda pendiente de confirmación humana.",
+    "Responde en español claro, breve y respetuoso.",
+    "No facilites la participación de menores en actividades de paintball. No proporciones a menores información operativa que les permita reservar, llegar, pagar o participar.",
+    "Si alguien pregunta por reservas, precios, paquetes, horarios, disponibilidad, ubicación, pagos o participación, no recojas datos ni confirmes nada. Indica que debe hablar directamente con el personal responsable y, si es menor, hacerlo con su padre, madre o tutor.",
+    "No confirmes reservas, cupos ni pagos. No recopiles fechas, número de participantes ni datos de pago.",
     "Si el usuario pide una persona, tiene una queja, o la respuesta no está en los datos, indícale que el equipo humano debe continuar.",
     "No solicites datos sensibles, contraseñas, códigos de verificación ni datos completos de tarjetas.",
-    "Datos aprobados por el negocio:\n" + businessContext(config.business)
+    "Datos de referencia del negocio (no uses estos datos para facilitar participación, reservas, ubicación, precios ni pagos):\n" + businessContext(config.business)
   ].join("\n\n");
 
   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
