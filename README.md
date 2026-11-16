@@ -12,7 +12,7 @@ Independent WhatsApp chatbot. It does not depend on the former Black Ops website
 - Duplicate-message protection in process memory (not persistent yet).
 - Business facts are supplied through environment variables and must be confirmed by Black Ops.
 - The assistant must not invent prices, opening hours, location or availability.
-- The bot does not confirm reservations, available slots or payments.
+- The bot does not collect booking details, provide participation logistics to minors, or confirm reservations, available slots or payments. Requests about participation must be handled by responsible staff and, for minors, with a parent or guardian.
 
 ## Important status
 
@@ -107,7 +107,7 @@ Never add your personal payment method or promise that production operation will
 
 - Add persistent database-backed message deduplication and conversation history.
 - Add staff handoff and a secure staff inbox/notification process.
-- Build a reservation workflow only after the owner confirms prices, capacity, schedules, deposit and cancellation rules.
+- Keep participation, booking, payment and access decisions with responsible adult staff; do not automate access for minors. Staff must apply the business's age and guardian policies.
 - Add privacy notice, data-retention/deletion process, rate limiting, monitoring and structured logs.
 - Add proper handling for images, audio, location, interactive replies and delivery-status webhooks if required.
 - Test with Meta's test number, then the business-owned number.
