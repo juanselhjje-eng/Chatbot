@@ -12,7 +12,7 @@ export function loadConfig(env = process.env) {
     accessToken: env.WHATSAPP_ACCESS_TOKEN || "",
     phoneNumberId: env.WHATSAPP_PHONE_NUMBER_ID || "",
     appSecret: env.WHATSAPP_APP_SECRET || "",
-    graphApiVersion: env.WHATSAPP_GRAPH_API_VERSION || "v23.0",
+    graphApiVersion: env.WHATSAPP_GRAPH_API_VERSION || "v27.0",
     openRouterApiKey: env.OPENROUTER_API_KEY || "",
     openRouterModel: env.OPENROUTER_MODEL || "",
     business: {
