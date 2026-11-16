@@ -79,16 +79,18 @@ async function handleMessage(message) {
     seenMessageIds.delete(oldest);
   }
 
+  let reply;
   if (message.type !== "text" || !message.text) {
-    await sendWhatsAppText({
-      ...whatsappOptions(),
-      to: message.from,
-      text: "Por ahora puedo procesar mensajes de texto. Un integrante del equipo puede ayudarte con este mensaje."
-    });
-    return;
+    reply = "Por ahora puedo procesar mensajes de texto. Un integrante del equipo puede ayudarte con este mensaje.";
+  } else {
+    try {
+      reply = await createReply({ text: message.text, config });
+    } catch (error) {
+      console.error("Assistant error:", error.message);
+      reply = "En este momento no pude procesar tu consulta. Un integrante del equipo de Black Ops debe ayudarte. Por favor, vuelve a escribirnos en unos minutos.";
+    }
   }
 
-  const reply = await createReply({ text: message.text, config });
   await sendWhatsAppText({
     ...whatsappOptions(),
     to: message.from,
